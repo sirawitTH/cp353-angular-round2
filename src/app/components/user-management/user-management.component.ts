@@ -65,4 +65,16 @@ export class UserManagementComponent implements OnInit {
     console.log(this.isEditable);
   }
 
+  deleteUser(user) {
+    this.userList.forEach((element, index) => {
+      if (element == user) {
+        this.userManagementService.deleteUser(user.adm_id).subscribe((response) => {
+          console.log("delete respone : " + response);
+        });
+        this.userList.splice(index, 1);
+      }
+    });
+    return false;
+  }
+
 }
